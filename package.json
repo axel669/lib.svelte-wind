@@ -5,8 +5,9 @@
   "main": "src/index.mjs",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "rollup -c test/rollup.config.mjs"
+    "site/start": "wrangler pages dev test/build --port 45067",
+    "site/build": "rollup -c test/rollup.config.mjs",
+    "site/watch": "rollup -c test/rollup.config.mjs --watch"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "src/"
   ],
   "imports": {
-    "#lib": "./src/index.mjs"
+    "#lib": "./src/index.mjs",
+    "#comp/*": "./test/src/comp/*.svelte"
   }
 }
