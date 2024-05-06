@@ -12,7 +12,19 @@
 </script>
 
 <ws-titlebar use:wsx={wind}>
-    <slot name="menu" />
-    <slot name="title" />
-    <slot name="action" />
+    {#if $$slots.menu}
+        <div ws-x="[$menu] [grid] [p 0px]">
+            <slot name="menu" />
+        </div>
+    {/if}
+    {#if $$slots.title}
+        <div ws-x="[$title] [grid] [p 0px]">
+            <slot name="title" />
+        </div>
+    {/if}
+    {#if $$slots.action}
+        <div ws-x="[$action] [grid] [p 0px]">
+            <slot name="action" />
+        </div>
+    {/if}
 </ws-titlebar>

@@ -72,7 +72,7 @@
 
     $: wind = {
         "$flat": flat,
-        "@control": true,
+        "@@control": true,
         "$color": color,
         ...props.wind,
     }

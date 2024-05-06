@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@axel669/windstorm": "0.3.8"
+    "@axel669/windstorm": "0.4.1"
   },
   "devDependencies": {
     "@axel669/ipsen": "0.4.0-beta.7",

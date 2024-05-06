@@ -9,8 +9,8 @@
     export let adorn = false
 
     $: wind = {
-        "$title": title,
-        "$subtitle": subtitle,
+        "$title-text": title,
+        "$subtitle-text": subtitle,
         "$adorn": adorn,
         block,
         ...$$restProps
