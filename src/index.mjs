@@ -45,9 +45,18 @@ export { default as Toast } from "./composed/toast.svelte"
 export { default as AsyncButton } from "./async/button.svelte"
 export { default as LoadZone } from "./async/load-zone.svelte"
 
+export { default as Route } from "./routing/route.svelte"
+export { default as Title } from "./routing/title.svelte"
+
 export { default as wsx } from "./wsx.mjs"
 
 export { hash } from "./hash.js"
 
+export {
+    layoutContext,
+    createLayoutContext,
+    route,
+    stackTop,
+} from "./routing/routing.js"
 export * from "./handler$.mjs"
 export * from "./composed/table-functions.js"
