@@ -42,6 +42,8 @@
 
 {#if match !== null}
     {#key routeParams._path}
-        <svelte:component this={component} {...props} {routeInfo} />
+        <slot>
+            <svelte:component this={component} {...props} {routeInfo} />
+        </slot>
     {/key}
 {/if}
