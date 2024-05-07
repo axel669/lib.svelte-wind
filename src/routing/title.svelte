@@ -1,10 +1,18 @@
 <script context="module">
     import { writable } from "svelte/store"
 
-    import { storeTop } from "./routing.js"
+    import { stackStore } from "./routing.js"
 
     // const stack = writable([])
-    const stack = storeTop()
+    const stack = stackStore()
+
+    const updateTitle = (format, data) => {
+        if (format === null || data === stackStore.empty) {
+            return
+        }
+
+        document.title = format(data)
+    }
 </script>
 
 <script>
@@ -12,9 +20,7 @@
     export let data = ""
     export let format = null
 
-    const pass = stack.push(data)
+    stack.push(data)
 
-    $: current = $stack
-    $: titleText = (format !== null && current !== undefined) ? format($current) : ""
-    $: document.title = titleText
+    $: updateTitle(format, $stack)
 </script>

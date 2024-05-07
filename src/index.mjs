@@ -53,10 +53,8 @@ export { default as wsx } from "./wsx.mjs"
 export { hash } from "./hash.js"
 
 export {
-    layoutContext,
-    createLayoutContext,
     route,
-    stackTop,
+    stackStore,
 } from "./routing/routing.js"
 export * from "./handler$.mjs"
 export * from "./composed/table-functions.js"

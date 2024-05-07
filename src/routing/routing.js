@@ -1,5 +1,5 @@
-import { getContext, setContext, onMount } from "svelte"
-import { writable, get, derived } from "svelte/store"
+import { onMount } from "svelte"
+import { writable, derived } from "svelte/store"
 
 import { hash } from "../hash.js"
 
@@ -28,43 +28,28 @@ export const resolve = (base, part) => {
     return `${base}/${part}`
 }
 
-export const createLayoutContext = (initial) => {
-    const source = writable(initial)
-    setContext(
-        ctx.layout,
-        new Proxy(
-            { subscribe: source.subscribe },
-            {
-                set(_, prop, value) {
-                    source.set({ ...get(source), [prop]: value })
-                    return true
-                }
-            }
-        )
-    )
-    return source
-}
-export const layoutContext = () => getContext(ctx.layout)
-
-export const storeTop = () => {
-    const stack = writable([])
-    const current = derived(
-        stack,
-        stack => stack[stack.length - 1]
-    )
+const emptyStack = Symbol("empty stack")
+export const stackStore = (initial = stackStore.empty) => {
+    const stack = [writable(initial)]
+    const current = writable(initial)
+    let attachment = stack[0].subscribe(current.set)
 
     return {
         subscribe: current.subscribe,
         push: (initial) => {
             const item = writable(initial)
             onMount(() => {
-                const items = get(stack)
-                stack.set([...items, item])
-                return () => stack.set(
-                    get(stack).slice(0, -1)
-                )
+                stack.push(item)
+                attachment()
+                attachment = item.subscribe(current.set)
+                return () => {
+                    stack.pop()
+                    attachment()
+                    attachment = stack[stack.length - 1].subscribe(current.set)
+                }
             })
             return item
         }
     }
 }
+stackStore.empty = emptyStack
