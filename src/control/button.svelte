@@ -4,7 +4,7 @@
     import wsx from "../wsx.mjs"
     import variant from "../variant.mjs"
 
-    export let color = false
+    export let color = "@default"
     export let compact = false
     export let disabled
 
