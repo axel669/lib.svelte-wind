@@ -3,7 +3,7 @@
 <script>
     import wsx from "../wsx.mjs"
 
-    export let color = false
+    export let color = "@primary"
     export let fillHeader = false
     export let data = []
 
