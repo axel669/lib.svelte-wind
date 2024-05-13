@@ -16,7 +16,7 @@
     $: wind = {
         [type]: true,
         "$color": color,
-        $click: clickable,
+        "@@click": clickable,
         ...$$restProps
     }
 </script>
