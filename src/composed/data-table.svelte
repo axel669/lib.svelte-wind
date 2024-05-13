@@ -51,7 +51,7 @@
     import wsx from "../wsx.mjs"
     import { handler$, eventHandler$ } from "../handler$.mjs"
 
-    export let color = false
+    export let color = "@primary"
     export let fillHeader = true
     export let data
     export let pageSize = 10
@@ -65,7 +65,7 @@
     let filterFunctions = []
     let jumpTarget = "1"
 
-    $: filteredData = applyFilters(data, filterFunctions)
+    $: filteredData = applyFilters(data, filterFunctions, sorting.func)
     $: rows = sliceData(filteredData, page, pageSize, sorting.func)
     $: rowCount = filteredData?.length ?? 0
     $: pageCount = Math.ceil(rowCount / pageSize)
@@ -114,6 +114,7 @@
         fillHeader,
         sorting,
         updateFilter,
+        color,
     }
     setContext(dtContext, context)
 
@@ -156,7 +157,7 @@
     }
 </script>
 
-<Paper {color} h={height}>
+<Paper {color} h={height} card>
     <ws-flex use:wsx={content} slot="content" bind:this={scroller}>
         <Table data={rows} {color} {fillHeader} {...$$restProps} b.t.w="0px">
             <tr use:wsx={header} slot="header">
