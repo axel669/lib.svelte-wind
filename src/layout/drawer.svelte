@@ -41,7 +41,7 @@
 <!-- svelte-ignore a11y-interactive-supports-focus -->
 <wind-drawer-container use:wsx={container} on:click|stopPropagation
 role="menubar" transition:trick>
-    <Paper {...$$restProps}>
+    <Paper r="0px" {...$$restProps}>
         <slot name="header" slot="header" />
         <slot />
         <slot name="footer" slot="footer" />
