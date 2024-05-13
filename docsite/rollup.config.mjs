@@ -13,6 +13,69 @@ import { marked } from "marked"
 import Prism from "prismjs"
 import "prism-svelte"
 
+const root = path.resolve("docsite/example")
+const docsroot = path.resolve("docsite/docs")
+const exampleFiles = (await fs.readdir(
+    root,
+    { withFileTypes: true, recursive: true }
+)).filter(
+    ent => ent.isFile()
+).map(
+    ent => path.relative(
+        root,
+        path.resolve(ent.path, ent.name)
+    ).replaceAll(path.sep, "/")
+)
+
+const componentList = exampleFiles.filter(
+    file => file.includes("/") === false
+)
+const exampleGroups = await Promise.all(
+    componentList.map(
+        async (file) => {
+            const id = path.basename(file, path.extname(file))
+            const name = id.replace(
+                /(^|\-)(\w)/g,
+                (_, _0, letter) => letter.toUpperCase()
+            )
+            const files = [
+                file,
+                ...exampleFiles.filter(
+                    exf => exf.startsWith(`${id}/`) === true
+                )
+            ]
+            const contents = await Promise.all(
+                files.map(
+                    filename => fs.readFile(
+                        path.resolve(root, filename),
+                        "utf8"
+                    )
+                )
+            )
+            const docs = await fs.readFile(
+                path.resolve(docsroot, `${id}.md`),
+                "utf8"
+            )
+            return {
+                id,
+                name,
+                path: path.resolve(root, file),
+                code: files.map(
+                    (filename, i) => [
+                        filename,
+                        Prism.highlight(
+                            contents[i],
+                            Prism.languages.svelte,
+                            "svelte"
+                        )
+                    ]
+                ),
+                docs: marked.parse(docs),
+            }
+        }
+    )
+)
+
 export default {
     input: "docsite/index.html",
     output: {
@@ -39,64 +102,35 @@ export default {
                 if (file !== "$examples") {
                     return
                 }
-                const root = path.resolve("docsite/example")
-                const docsroot = path.resolve("docsite/docs")
-                const list = await fs.readdir(root)
-                const content = await Promise.all(
-                    list.map(
-                        file => fs.readFile(
-                            path.resolve(root, file),
-                            "utf8"
-                        )
-                    )
+
+                const imports = exampleGroups.map(
+                    (ex) => `import ${ex.name}Example from ${JSON.stringify(ex.path)}`
                 )
-                const docs = await Promise.all(
-                    list.map(
-                        file => {
-                            const base = path.basename(file, path.extname(file))
-                            return fs.readFile(
-                                path.resolve(docsroot, `${base}.md`),
-                                "utf8"
-                            )
-                        }
-                    )
-                )
-                const exports = content.map(
-                    (str, i) => {
-                        const code = JSON.stringify(
-                            Prism.highlight(
-                                str,
-                                Prism.languages.svelte,
-                                "svelte"
-                            )
-                        )
-                        const name = list[i].split(".")[0]
-                        const dochtml = JSON.stringify(
-                            marked.parse(docs[i])
-                        )
-                        const Name = name.replace(
-                            /(^|\-)(\w)/g,
-                            (_, _0, letter) => letter.toUpperCase()
-                        )
+                const exports = exampleGroups.map(
+                    ex => {
+                        const id = JSON.stringify(ex.id)
+                        const name = JSON.stringify(ex.name)
+                        const code = JSON.stringify(ex.code)
+                        const docs = JSON.stringify(ex.docs)
                         return `{
-                            id: "${name}",
-                            name: "${Name}",
-                            component: example${i},
+                            id: ${id},
+                            name: ${name},
                             code: ${code},
-                            docs: ${dochtml}
+                            docs: ${docs},
+                            component: ${ex.name}Example
                         }`
                     }
                 )
+
                 const output = [
-                    ...list.map(
-                        (file, i) => `import example${i} from ${JSON.stringify(path.resolve(root, file))}`
-                    ),
+                    ...imports,
                     "",
                     "export default [",
                     exports.join(",\n"),
                     "]",
                     ""
                 ].join("\n")
+
                 return output
             }
         },
