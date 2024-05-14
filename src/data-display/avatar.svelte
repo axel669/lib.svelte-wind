@@ -18,7 +18,10 @@
 
 <ws-avatar use:wsx={wind}>
     {#if image !== null}
-        <img src={image} {alt} />
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <object data={image} type="image/png" ws-x="[w 100%] [h 100%] [flex] [fl-center]">
+            {alt}
+        </object>
     {:else}
         {text}
     {/if}
