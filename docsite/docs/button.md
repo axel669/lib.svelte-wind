@@ -3,21 +3,18 @@ Basic clickable component for handling user interaction.
 
 ## Props
 
-### color
-`string`
+### color _string_
+Alias for `$color`
 
-Sets `$color`
+### compact _bool_
+Alias for `$compact`
 
-### compact
-`bool`
+### disabled _bool_
+Sets the `<button>` disabled attribute
 
-Sets `$compact`
-
-### fill / outline
-`bool`
-
+### flat / fill / outline _bool_
 Sets the button type to `$fill` if fill is true, `$outline` if outline
-is true, or `$flat` if neither is true.
+is true, or `$flat` if neither those is true (or if flat is true).
 
 ## Events
 - click

@@ -3,28 +3,8 @@ Adds a small badge over the upper-right corner of some content.
 
 ## Props
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### text
-`string`
-
+### text _string_
 The badge text.
-
-## Example
-```svelte
-<script>
-    import { Badge } from "@axel669/zephyr"
-
-    let count = 10
-</script>
-
-<Badge text={count}>
-    Unread Messages
-</Badge>
-<Badge text="1k+" color="warning">
-    <button on:click={() => count += 1}>Clickable Content</button>
-</Badge>
-```

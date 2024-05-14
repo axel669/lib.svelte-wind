@@ -1,56 +1,27 @@
 # Confirm Dialog
-A nicer confirm dialog to use with [Modal](../layout/dialog.md).
+A nicer confirm dialog to use with [Modal](#/modal).
 
 ## Props
 
-### color
+### color _string_
 Sets the $color macro.
 
-### icon
-The name of an icon to show with the title of the dialog.
+### icon _string_
+The name of an icon to show with the title of the dialog. See [Icon](#/icon)
+for details about icon names.
 
-### message
+### message _string_
 The message to shwo in the confirm.
 
-### cancelText
+### cancelText _string_
 The text for the button that cancels the dialog.
 
-### okText
+### okText _string_
 The text for the button that confirms the dialog.
 
-### title
+### title _string_
 The title for the dialog.
 
 ## Return Values
 The Confirm component will return `true` from the `Modal.show` function if the
 OK button is clicked, and false if the Cancel button is clicked.
-
-## Example
-```svelte
-<script>
-    import { Confirm, Button, EntryButton, Modal } from "@axel669/zephyr"
-
-    let confirmModal = null
-    const confirmProps = {
-        title: "Confirm Example",
-        message: "This is an confirm!"
-    }
-    const show = async () => {
-        const result = await confirmModal.show(confirmProps)
-        if (result === true) {
-            console.log("confirmed!")
-            return
-        }
-        console.log("cancelled :(")
-    }
-</script>
-
-<Modal component={Confirm} bind:this={confirmModal} />
-<Button on:click={show}>
-    Show Confirm
-</Button>
-
-<EntryButton props={confirmProps}>
-    Show Confirm
-</EntryButton>
-```

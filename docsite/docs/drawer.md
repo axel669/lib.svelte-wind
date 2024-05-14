@@ -1,70 +1,27 @@
 # Drawer
-
-A modal container for creating dialogs. The Dialog component is a modal
-element that uses a Paper element for the layout of content. All extra props
-and slots for the Drawer are passed to the underlying Paper component.
+A modal container for creating dialogs. The Drawer component is a modal
+element that uses a Paper element for the layout of content. The Drawer slides
+in and out from a region of the screen determined by the `type`.
 
 The Drawer component is used as a wrapper for content and is used in
 conjunction with the Modal component to be controlled on screen.
 
 ## Props
+All props not listed are passed into the underlying Paper component.
 
-### close
-`function`
-
-If passed, this function will be called when the user clicks in the
-empty area outside of the drawer contents.
-
-### height
-`string`
-
+### height _string_
 Sets the height of the select drawer, no effect for menu and action
 drawers which default to full height of the window.
 
-### type
-`string`
-
+### type _string_
 The type of drawer. Default is "menu"
-#### "menu"
 
+#### "menu"
 Makes a drawer that slides in on the left side of the screen
 
 #### "action"
-
 Makes a drawer that slides in on the right side of the screen
 
 #### "select"
-
 Makes a drawer that is centered horizontally and slides in from
 the top of the screen
-
-## Example
-`cool-drawer.svelte`
-```svelte
-<script>
-    import { Drawer, Titlebar, Text } from "@axel669/zephyr"
-</script>
-
-<Drawer>
-    <Titlebar slot="header">
-        <Text slot="title" title>
-            Some Title
-        </Text>
-    </Titlebar>
-
-    <span>Content</span>
-</Drawer>
-```
-
-`app.svelte`
-```svelte
-<script>
-    import { Modal, EntryButton } from "@axel669/zephyr"
-    import CoolDrawer from "./cool-drawer.svelte"
-</script>
-
-<Modal component={CoolDrawer} />
-<EntryButton this={Modal} component={CoolDrawer}>
-    Open Cool Dialog
-</EntryButton>
-```

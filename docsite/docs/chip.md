@@ -1,36 +1,18 @@
 # Chip
-
 Shows a small piece of information that is separate from the surrounding
 info and optionally allows interaction.
 
 ## Props
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### clickable
-`bool`
-
+### clickable _bool_
 If true, the chip will have the button ripple effect when clicked.
 
-### fill
-`bool`
-
-If true, sets $fill on the chip. If false $outline is set instead.
+### flat / fill / outline _bool_
+Sets the chip type to `$fill` if fill is true, `$outline` if outline
+is true, or `$flat` if neither those is true (or if flat is true).
 
 ## Events
 - click
-
-## Example
-```svelte
-<script>
-    import { Chip } from "@axel669/zephyr"
-</script>
-
-Emails:
-<Chip clickable>admin@site.com</Chip>
-<Chip clickable color="warning">weirdge@site.com</Chip>
-<Chip color="primary" fill>required@site.io</Chip>
-```

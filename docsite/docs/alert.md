@@ -2,6 +2,8 @@
 A nicer alert dialog to use with [Modal](../layout/dialog.md).
 
 ## Props
+The props for Alert are passed in as an object on whatever element is handling
+the opening/closing of the Alert.
 
 ### color
 Sets the $color macro.
@@ -17,26 +19,3 @@ The text for the button that closes the alert.
 
 ### title
 The title for the alert.
-
-## Example
-```svelte
-<script>
-    import { Alert, Button, EntryButton, Modal } from "@axel669/zephyr"
-
-    let alertModal = null
-    const alertProps = {
-        title: "Alert Example",
-        message: "This is an alert!"
-    }
-    const show = () => alertModal.show(alertProps)
-</script>
-
-<Modal component={Alert} bind:this={alertModal} />
-<Button on:click={show}>
-    Show Alert
-</Button>
-
-<EntryButton props={alertProps}>
-    Show Alert
-</EntryButton>
-```
