@@ -7,9 +7,17 @@ export default (node, props) => {
             node.setAttribute("ws-x", null)
             return
         }
+        const formatted = Object.entries(goodProps).reduce(
+            (props, [key, value]) => {
+                const realKey = key.replaceAll("--", ":").replace(/^\-/, "$")
+                props[realKey] = value
+                return props
+            },
+            {}
+        )
         node.setAttribute(
             "ws-x",
-            ws.x(goodProps)
+            ws.x(formatted)
         )
     }
     update(props)
