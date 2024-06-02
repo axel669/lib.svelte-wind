@@ -34,7 +34,7 @@
         {message}
     </Text>
 
-    <Grid cols="1fr 1fr" slot="footer" pad="0px">
+    <Grid cols="1fr 1fr" slot="footer" p="0px">
         <Button on:click={cls(false)} color="@danger">
             {cancelText}
         </Button>
