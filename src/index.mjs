@@ -1,5 +1,6 @@
 export { default as Button } from "./control/button.svelte"
 export { default as Input } from "./control/input.svelte"
+export { default as Label } from "./control/label.svelte"
 export { default as Link } from "./control/link.svelte"
 export { default as Radio } from "./control/radio.svelte"
 export { default as Select } from "./control/select.svelte"
