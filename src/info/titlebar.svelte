@@ -8,8 +8,6 @@
         "$color": color,
         "$fill": fill,
         $title: true,
-        grid: true,
-        p: "0px"
     }
     $: wind = {
         ...$$restProps
