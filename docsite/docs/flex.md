@@ -1,43 +1,16 @@
 # Flex
-
 Container that uses flex layout by default with some nice default values.
 
 ## Props
 
-### direction
-`string`
-
+### direction _string_
 Sets `fl.dir`
 
-### pad
-`string`
-
-Sets `p`
-
-### gap
-`string`
-
-Sets `gap`
-
-### cross
-`string`
-
+### cross _string_
 Sets `fl.cross`, default is `"stretch"`
 
-### main
-`string`
-
+### main _string_
 Sets `fl.main`, default is `"start"`
 
-## Example
-```svelte
-<script>
-    import { Flex, Text } from "@axel669/zephyr"
-</script>
-
-<Flex cross="stretch">
-    <Text>Content</Text>
-    <Text>More content</Text>
-    <Text>Event more content</Text>
-<Flex>
-```
+### scrollable _bool_
+If true, sets overflow to `"auto"`

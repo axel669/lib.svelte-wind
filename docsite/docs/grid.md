@@ -1,61 +1,24 @@
 # Grid
-
 Container that uses grid layout by default with some nice default values.
 
-## Base
-[Windstorm Grid](https://axel669.github.io/lib.windstorm/#components-grid)
-
 ## Props
-All [windstorm functions](https://axel669.github.io/lib.windstorm/#css-shorthands)
-are supported.
 
-
-### direction
-`string`
-
+### direction _string_
 Sets `gr.flow`
 
-### pad
-`string`
-
-Sets `p`
-
-### gap
-`string`
-
-Sets `gap`
-
-### cols
-`string|Array`
-
+### cols _string|Array_
 Sets `gr.cols`. Accepts either an array of values that are joined by " "
 or a regular string value.
 
-### rows
-`string|Array`
-
+### rows _string|Array_
 Sets `gr.rows`. Accepts either an array of values that are joined by " "
 or a regular string value.
 
-### autoCol
-`string`
-
+### autoCol _string_
 Sets `gr.cols.a`
 
-### autoRow
-`string`
-
+### autoRow _string_
 Sets `gr.rows.a`
 
-## Example
-```svelte
-<script>
-    import { Grid, Text } from "@axel669/zephyr"
-</script>
-
-<Grid cols="1fr 1fr">
-    <Text>Content</Text>
-    <Text>More content</Text>
-    <Text>Event more content</Text>
-<Grid>
-```
+### scrollable _bool_
+If true, sets overflow to `"auto"`

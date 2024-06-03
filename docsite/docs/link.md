@@ -1,50 +1,24 @@
 # Link
-
 Themed and customizale `<a>` tag component.
 
 ## Props
 
-### button `string`
-
+### button _string_
 If true, the link will be styled like a button
 
-### color
-`string`
-
+### color _string_
 Sets the color of the button. Applies to both regular links and button
 style links.
 
-### href
-`string`
-
+### href _string_
 Sets the href attribute.
 
-### rel
-`string`
-
+### rel _string_
 Sets the rel attribute.
 
-### target
-`string`
-
+### target _string_
 Sets the target attribute.
 
-### fill / outline / flat
-`bool`
-
+### fill / outline / flat _bool_
 Sets the link-button type to `$fill` if fill is true, `$outline` if outline
 is true, or `$flat` if neither is true.
-
-## Example
-```svelte
-<script>
-    import { Link } from "@axel669/zephyr"
-</script>
-
-<Link color="primary" href="test" target="_blank">
-    Test
-</Link>
-<Link color="primary" href="logout" button outline>
-    Logout
-</Link>
-```
