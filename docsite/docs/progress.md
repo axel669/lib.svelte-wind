@@ -1,46 +1,23 @@
 # Progress
-
 Displays progress bar with an optional label.
 
 ## Props
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### label
-`string`
-
+### label _string_
 The label for the bar
 
-### max
-`number`
-
+### max _number_
 Sets the max value for the progress bar. Default is 1
 
-### outline
-`bool`
-
+### outline _bool_
 Sets `$outline`
 
-### row
-`bool`
-
+### row _bool_
 Sets `$row`
 
-### value
-`number`
-
+### value _number_
 Sets the value of the progress bar. Combined with max to determine how
 filled the bar is.
-
-## Example
-```svelte
-<script>
-    import { Progress } from "@axel669/zephyr"
-</script>
-
-<Progress color="primary" value={0.1} />
-<Progress color="primary" value={5} max={10} />
-```
