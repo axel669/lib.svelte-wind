@@ -1,28 +1,21 @@
 <svelte:options immutable />
 
 <script>
+    import { writable } from "svelte/store"
+
     import wsx from "../wsx.mjs"
     import { handler$ } from "../handler$.mjs"
 
-    export let color = "@primary"
+    export let color = "@default"
     export let options = []
     export let vertical = false
-    export let solid = false
+    export let fill = false
     export let value
 
-    $: index = options.findIndex(item => item.value === value)
-
-    const set = handler$(
-        (next) => {
-            if (value === next) {
-                return
-            }
-            value = next
-        }
-    )
+    const name = `${Date.now()}.${Math.random().toString(16)}`
 
     $: wind = {
-        "$solid": solid,
+        "$fill": fill,
         "$color": color,
         $vert: vertical,
         ...$$restProps,
@@ -32,12 +25,9 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <ws-tabs use:wsx={wind} role="tablist">
     {#each options as tab, i}
-        <!-- svelte-ignore a11y-interactive-supports-focus -->
-        <ws-tab use:wsx={{"$tab-selected": index === i}}
-        on:click={set(tab.value)} role="tab">
-            <slot {tab} selected={index === i}>
-                {tab.label}
-            </slot>
-        </ws-tab>
+        <label>
+            <input type="radio" {name} value={tab.value} bind:group={value} />
+            <ws-tab>{tab.label}</ws-tab>
+        </label>
     {/each}
 </ws-tabs>

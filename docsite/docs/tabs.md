@@ -1,47 +1,21 @@
 # Tabs
-
 It's tabs, everyone knows what tabs are at this point.
 
 ## Props
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### options
-`Array[Object]`
-
+### options _Array[Object]_
 An array of options where each item is `{ label, value }`. `label`
 should be a string, `value` can be of any type.
 
-### vertical
-`bool`
-
+### vertical _bool_
 Sets `$vert`
 
-### solid
-`bool`
-
+### solid _bool_
 Sets `$solid`
 
-### value
-`any`
-
+### value _any_
 The value of the currently selected tab. Can be bound to react to
 changes and set to control which tab is selected.
-
-## Example
-```svelte
-<script>
-    import { Tabs } from "@axel669/zephyr"
-
-    const options = [
-        { label: "Left", value: "left" },
-        { label: "Right", value: 2 },
-    ]
-</script>
-
-<Tab {options} bind:value color="primary" />
-<Tab {options} bind:value color="secondary" solid vertical />
-```
