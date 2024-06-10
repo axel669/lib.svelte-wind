@@ -5,14 +5,12 @@
 
     export let title = false
     export let subtitle = false
-    export let block = false
     export let adorn = false
 
     $: wind = {
         "$title-text": title,
         "$subtitle-text": subtitle,
         "$adorn": adorn,
-        block,
         ...$$restProps
     }
 </script>

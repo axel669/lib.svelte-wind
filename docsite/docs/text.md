@@ -1,34 +1,13 @@
 # Text
-
 Simple component with some common props for types of text.
 
 ## Props
 
-
-### adorn
-`bool`
-
+### adorn _bool_
 Sets `$adorn`
 
-### block
-`bool`
-
-Sets `block`
-
-### subtitle
-`bool`
-
+### subtitle _bool_
 Sets `$subtitle`
 
-### title
-`bool`
-
+### title _bool_
 Sets `$title`
-
-## Example
-```svelte
-<Text>Some text</Text>
-<Text title>Bigger text</Text>
-<Text subtitle>Smaller text</Text>
-<Text block>Text on its own line</Text>
-```
