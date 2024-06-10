@@ -29,22 +29,3 @@ The component to display when `show` is called
 
 ### `show(props?) -> Promise`
 Shows the given component and passes any props provided.
-
-## Example
-```svelte
-<script>
-    import { Modal, Button } from "@axel669/zephyr"
-    import CoolDialog from "./cool-dialog.svelte"
-
-    let dialog = null
-    const dialogThing = async () => {
-        const value = await dialog.show({ a: 10, b: 12 })
-        console.log(value)
-    }
-</script>
-
-<Modal component={CoolDialog} bind:this={dialog} />
-<Button on:click={dialogThing}>
-    Open Dialog
-</Button>
-```
