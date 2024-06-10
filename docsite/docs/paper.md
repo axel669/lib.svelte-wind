@@ -8,29 +8,19 @@ needlessly.
 
 ## Props
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### card
-`bool`
-
+### card _bool_
 Sets `$outline`
 
-### square
-`bool`
-
+### square _bool_
 Sets `r[0px]`
 
-### layout
-`Component`
-
+### layout _Component_
 Sets the layout the card will use to display content. Default is Flex.
 
-### scrollable
-`bool`
-
+### scrollable _bool_
 Sets `over[auto]` on the layout component
 
 ### l-*
@@ -54,41 +44,3 @@ component defined in the props. As an alternative, a content slot may
 be used that will be rendered directly in the content slot of the Paper
 without the layout component/props being rendered (useful when nesting
 papers for example)
-
-## Example
-```svelte
-<script>
-    import { Paper, Tabs, Text, Titlebar } from "@axel669/zephyr"
-</script>
-
-<Paper>
-    <Titlebar slot="header">
-        <Text slot="title" title>
-            Some Title
-        </Text>
-    </Titlebar>
-
-    <div>Content 1</div>
-    <div>Content 2</div>
-    <div>Content 3</div>
-</Paper>
-<Paper l-pad="0px" m="4px">
-    <Titlebar slot="header">
-        <Text slot="title" title>
-            Some Screen
-        </Text>
-    </Titlebar>
-
-    <Paper slot="content">
-        <Tabs slot="header" {options} bind:value />
-
-        <div>Content 1</div>
-        <div>Content 2</div>
-        <div>Content 3</div>
-    </Paper>
-
-    <div slot="footer">
-        Wat
-    </div>
-</Paper>
-```
