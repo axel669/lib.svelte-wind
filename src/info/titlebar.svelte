@@ -10,7 +10,8 @@
         $title: true,
     }
     $: wind = {
-        ...$$restProps
+        ...$$restProps,
+        "gr.cols": "auto 1fr auto"
     }
 </script>
 
