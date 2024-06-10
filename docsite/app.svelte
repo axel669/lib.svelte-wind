@@ -23,15 +23,7 @@
 
     let theme = "dark"
 
-    // const ctx = createLayoutContext({
-    //     component: "Home"
-    // })
     const page = stackStore("Home")
-    // $: page = $pageStack
-    const items = Array.from(
-        { length: 30 },
-        (_, i) => `Item ${i}`
-    )
 </script>
 
 <Title format={data => `Zephyr - ${data}`} data="Home" />
@@ -41,13 +33,6 @@
     <link href="./md-fix.css" rel="stylesheet" />
 </svelte:head>
 <svelte:body use:wsx={{"@@theme": theme, "@@app": true}} />
-
-<!-- todo: date picker with custom format -->
-<!-- <div ws-x="[w 240px] [h 480px] [over auto]" style="scroll-snap-type: y mandatory;" on:scrollend={console.log}>
-    {#each items as item}
-        <div ws-x="[h 40px] [b 1px solid @primary]" style="scroll-snap-align: start;">{item}</div>
-    {/each}
-</div> -->
 
 <Screen>
     <Paper square card>
@@ -64,7 +49,7 @@
         <Route exact>
             <Grid cols="1fr 1fr 1fr" autoRow="48px" p="0px">
                 {#each examples as {id, name}}
-                    <Link href="#/{id}" button outline>{name}</Link>
+                    <Link href="#/{id}" button outline -color--hover="@secondary">{name}</Link>
                 {/each}
             </Grid>
         </Route>
