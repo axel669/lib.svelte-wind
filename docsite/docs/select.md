@@ -10,27 +10,19 @@ using a `<select>`
 All [windstorm functions](https://axel669.github.io/lib.windstorm/#css-shorthands)
 are supported.
 
-### color
-`string`
-
+### color _string_
 Sets `$color`
 
-### label
-`string`
-
+### label _string_
 The text to display as the label
 
-### options
-`Array[Object]`
-
+### options _Array[Object]_
 An array of options and groups to show in the select. Details below
 
 ### outline `bool`
-
 Sets `$outline`
-### value
-`any`
 
+### value _any_
 The value currently selected. Can be bound to react to selections or
 change the current selection.
 
@@ -45,26 +37,3 @@ after a `{ group }` item until another group item is seen (or the end of the
 array) is put into the optgroup defined by the group item.
 
 Labels and group names should be strings, but values can be any type.
-
-## Example
-```svelte
-<script>
-    import { Select } from "@axel669/zephyr"
-
-    // Results in:
-    // <option>first</option>
-    // <optgroup label="Not Numbers">
-    //     <option>second</option>
-    //     <option>third</option>
-    // </optgroup>
-    const options = [
-        { label: "first", value: 1 },
-        { group: "Not numbers" },
-        { label: "second", value: "two" },
-        { label: "third", value: [3] },
-    ]
-</script>
-
-<Select {options} bind:value label="Blep" />
-<Select {options} bind:value color="warning" label="Why" />
-```
