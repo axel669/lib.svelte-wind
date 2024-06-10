@@ -13,24 +13,10 @@ of the child nodes will flip which sides they appear on.
 ### color
 Sets `$color` and uses the fill style for coloration.
 
-## Example
-```svelte
-<script>
-    import { Notification, Button, Icon } from "@axel669/zephyr"
-</script>
+## Slots
 
-<Notification>
-    <Icon name="info-hexagon">
-        Some kind of information
-    </Icon>
-</Notification>
-<Notification color="danger">
-    <Icon name="alert-hexagon">
-        Something broke
-    </Icon>
+### start
+Content that goes before the notification text, in the border.
 
-    <Button>
-        Cancel
-    </Button>
-</Notification>
-```
+### end
+Content that goes after the notification text, in the border.
