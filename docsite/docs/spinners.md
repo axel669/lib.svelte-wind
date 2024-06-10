@@ -5,18 +5,8 @@ setup as web components.
 
 ## Props
 
-### color
+### color _string_
 Sets the $color macro.
 
 ### size
 The size of the spinner (width and height). Uses css units.
-
-## Example
-```svelte
-<script>
-    import { HexagonSpinner } from "@axel669/zephyr"
-</script>
-
-<HexagonSpinner size="50px" />
-<HexagonSpinner size="500px" color="@secondary" />
-```
