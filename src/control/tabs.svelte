@@ -12,8 +12,6 @@
     export let fill = false
     export let value
 
-    const name = `${Date.now()}.${Math.random().toString(16)}`
-
     $: wind = {
         "$fill": fill,
         "$color": color,
@@ -26,7 +24,7 @@
 <ws-tabs use:wsx={wind} role="tablist">
     {#each options as tab, i}
         <label>
-            <input type="radio" {name} value={tab.value} bind:group={value} />
+            <input type="radio" value={tab.value} bind:group={value} />
             <ws-tab>{tab.label}</ws-tab>
         </label>
     {/each}
