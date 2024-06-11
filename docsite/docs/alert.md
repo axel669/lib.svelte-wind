@@ -1,5 +1,5 @@
 # Alert Dialog
-A nicer alert dialog to use with [Modal](../layout/dialog.md).
+A nicer alert dialog to use with [Modal](#/modal).
 
 ## Props
 The props for Alert are passed in as an object on whatever element is handling
