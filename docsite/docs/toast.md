@@ -7,11 +7,11 @@ messages, where the Toaster component has the programmer manage the content.
 See the Toaster component. The Toast component is wrapper around it that
 also controls the children being shown for convenience.
 
-### component
+### component _Component_
 The component to use as a wrapper for the messages. Defaults to the
 ToastMessage component.
 
-### position
+### position _string_
 The position to show modals in. Uses the same positions as the Windstorm
 toaster.
 
@@ -33,13 +33,3 @@ For the default messages, the value will be `null` if no button was
 clicked, and `true` if the action button was clicked. This allows
 actions to be taken against interactions in the message without having
 to bind all kinds of events or callbacks.
-
-## Example
-```svelte
-<script>
-    let toast = null
-    const notify = () => toast.show(5000, { message: "hi" })
-</script>
-
-<Toast bind:this={toast} position="bc" />
-```
