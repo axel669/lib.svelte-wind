@@ -36,13 +36,12 @@
         params: routeParams,
         match: routeParams._path,
         route: $route,
-        relpath: (part) => `#${resolve(routeParams._path, part)}`,
     }
 </script>
 
 {#if match !== null}
     {#key routeParams._path}
-        <slot>
+        <slot {routeInfo}>
             <svelte:component this={component} {...props} {routeInfo} />
         </slot>
     {/key}

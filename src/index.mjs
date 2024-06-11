@@ -57,6 +57,7 @@ export { hash } from "./hash.js"
 export {
     route,
     stackStore,
+    relpath,
 } from "./routing/routing.js"
 export * from "./handler$.mjs"
 export * from "./composed/table-functions.js"

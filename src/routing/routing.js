@@ -1,4 +1,4 @@
-import { onMount } from "svelte"
+import { onMount, getContext } from "svelte"
 import { writable, derived } from "svelte/store"
 
 import { hash } from "../hash.js"
@@ -19,13 +19,20 @@ export const ctx = {
     layout: Symbol("Layout Context"),
 }
 export const resolve = (base, part) => {
-    if (part === "") {
+    if (part === "" || part === "/") {
         return base
     }
     if (base === "/" || base === undefined) {
         return `/${part}`
     }
+    if (part.startsWith("/") === true) {
+        return `${base}${part}`
+    }
     return `${base}/${part}`
+}
+export const relpath = (path) => {
+    const base = getContext(ctx.parent)
+    return `#${resolve(base, path)}`
 }
 
 const emptyStack = Symbol("empty stack")
