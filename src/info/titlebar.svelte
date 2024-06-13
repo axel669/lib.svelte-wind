@@ -11,7 +11,6 @@
     }
     $: wind = {
         ...$$restProps,
-        "gr.cols": "auto 1fr auto"
     }
 </script>
 

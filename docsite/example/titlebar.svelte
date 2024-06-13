@@ -27,6 +27,10 @@
                 Indented Subtitle
             </Text>
         </Text>
+
+        <Button slot="menu">
+            <Icon name="list" />
+        </Button>
     </Titlebar>
 </Paper>
 
@@ -42,7 +46,7 @@
         </Flex>
 
         <Button slot="action">
-            <Icon name="menu" />
+            Save
         </Button>
     </Titlebar>
 </Paper>
