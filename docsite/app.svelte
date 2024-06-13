@@ -5,8 +5,9 @@
         Grid,
         Icon,
         Link,
-        Screen,
         Paper,
+        Screen,
+        Select,
         Text,
         Titlebar,
 
@@ -21,9 +22,16 @@
 
     import examples from "$examples"
 
-    let theme = "dark"
+    let theme = localStorage.theme ?? "dark"
+    $: localStorage.theme = theme
 
     const page = stackStore("Home")
+
+    const options = [
+        { label: "Theme: Light", value: "light" },
+        { label: "Theme: Dark", value: "dark" },
+        { label: "Theme: Tron", value: "tron" },
+    ]
 </script>
 
 <Title format={data => `Zephyr - ${data}`} data="Home" />
@@ -44,6 +52,8 @@
             <Link href="#" button slot="menu">
                 <Icon name="house-fill" t.sz="20px" />
             </Link>
+
+            <Select m="4px" {options} bind:value={theme} slot="action" b.w="0px" />
         </Titlebar>
 
         <Route exact>
