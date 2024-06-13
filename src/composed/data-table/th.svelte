@@ -45,8 +45,8 @@
                 <slot />
             </div>
         {:else}
-            <Button compact r="0px" color="primary" fill={$context.fillHeader}
-            t.wt="inherit" on:click={setSort}>
+            <Button compact r="0px" fill={$context.fillHeader}
+            t.wt="inherit" on:click={setSort} color={$context.color}>
                 <slot />
                 <Icon name={sortIcon} m.l="4px" t.sz="16px" />
             </Button>

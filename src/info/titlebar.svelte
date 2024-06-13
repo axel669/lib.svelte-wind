@@ -4,15 +4,31 @@
     export let color
     export let fill = false
 
-    $: wind = {
+    $: titleProps = {
         "$color": color,
         "$fill": fill,
-        ...$$restProps
+        $title: true,
+    }
+    $: wind = {
+        ...$$restProps,
     }
 </script>
 
 <ws-titlebar use:wsx={wind}>
-    <slot name="menu" />
-    <slot name="title" />
-    <slot name="action" />
+    {#if $$slots.title}
+        <div use:wsx={titleProps}>
+            <slot name="title" />
+        </div>
+    {/if}
+
+    {#if $$slots.menu}
+        <div ws-x="[$menu] [grid] [p 0px]">
+            <slot name="menu" />
+        </div>
+    {/if}
+    {#if $$slots.action}
+        <div ws-x="[$action] [grid] [p 0px]">
+            <slot name="action" />
+        </div>
+    {/if}
 </ws-titlebar>

@@ -1,43 +1,13 @@
 <script>
-    /*md
-    [@] Components/ToastMessage
-
-    # ToastMessage
-
-    The default component for Toast to show messages with
-
-    ## Props
-
-### actionText
-`string`
-
-        If given, the message will have a button that can be clicked and will
-        use this text for the button text
-
-### color
-`string`
-
-        Sets `$color`
-
-### icon
-`string`
-
-        An icon to show with the message
-
-### message
-`string`
-
-        The message to show
-    */
-
     import { createEventDispatcher } from "svelte"
 
     import Button from "../../control/button.svelte"
     import Icon from "../../info/icon.svelte"
     import Notification from "../../info/notification.svelte"
+    import Text from "../../text.svelte"
 
     export let message = ""
-    export let icon = ""
+    export let icon = false
     export let color = false
     export let actionText = null
 
@@ -47,10 +17,17 @@
 </script>
 
 <Notification {color} on:click={dismiss}>
-    <Icon name={icon}>{message}</Icon>
-    {#if actionText}
-        <Button {color} variant="fill" on:click={respond}>
-            {actionText}
-        </Button>
-    {/if}
+    <Text slot="start" -adorn>
+        {#if icon !== false}
+            <Icon name={icon} />
+        {/if}
+    </Text>
+    <span>{message}</span>
+    <div slot="end" ws-x="[grid]">
+        {#if actionText}
+            <Button on:click={respond} r.l="0px">
+                {actionText}
+            </Button>
+        {/if}
+    </div>
 </Notification>

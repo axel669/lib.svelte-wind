@@ -13,14 +13,14 @@
     export let reverse = false
 
     $: container = {
-        "@toggle": true,
+        "@@toggle": true,
         "$flat": flat,
         "$color": color,
         "fl.dir": reverse ? "row-reverse" : false,
         ...$$restProps,
     }
     $: input = {
-        "@switch": checkbox === false
+        "@@switch": checkbox === false
     }
 
     const updateGroup = (checked) => {

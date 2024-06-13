@@ -24,6 +24,7 @@
 
     $: layoutProps = {
         over: scrollable ? "auto" : false,
+        $content: true,
         ...props.layout,
     }
     $: wind = {
@@ -35,13 +36,21 @@
 </script>
 
 <ws-paper use:wsx={wind}>
-    <slot name="header" />
+    {#if $$slots.header}
+        <div ws-x="[$header] [grid] [p 0px]">
+            <slot name="header" />
+        </div>
+    {/if}
     {#if $$slots.content}
-        <slot name="content" slot="content" />
+        <slot name="content" />
     {:else}
-        <svelte:component this={layout} {...layoutProps} slot="content">
+        <svelte:component this={layout} {...layoutProps}>
             <slot />
         </svelte:component>
     {/if}
-    <slot name="footer" />
+    {#if $$slots.footer}
+        <div ws-x="[$footer] [grid] [p 0px]">
+            <slot name="footer" />
+        </div>
+    {/if}
 </ws-paper>

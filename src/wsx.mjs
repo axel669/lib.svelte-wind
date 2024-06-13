@@ -1,7 +1,5 @@
 import ws from "@axel669/windstorm"
 
-// ws.custom("outline", (o) => ws.prop("outline", o))
-
 export default (node, props) => {
     const update = (props) => {
         const { slot = null, ...goodProps } = props ?? {}
@@ -9,15 +7,18 @@ export default (node, props) => {
             node.setAttribute("ws-x", null)
             return
         }
+        const formatted = Object.entries(goodProps).reduce(
+            (props, [key, value]) => {
+                const realKey = key.replaceAll("--", ":").replace(/^\-/, "$")
+                props[realKey] = value
+                return props
+            },
+            {}
+        )
         node.setAttribute(
             "ws-x",
-            ws.x(goodProps)
+            ws.x(formatted)
         )
-        if (slot === null) {
-            node.removeAttribute("slot")
-            return
-        }
-        node.setAttribute("slot", slot)
     }
     update(props)
     return { update }

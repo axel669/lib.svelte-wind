@@ -9,5 +9,7 @@ export const sorts = {
     natural: (propName) => {
         const comparitor = new Intl.Collator(undefined, { numeric: true })
         return (a, b) => comparitor.compare(a[propName], b[propName])
-    }
+    },
+    number: (propName) =>
+        (a, b) => a[propName] - b[propName]
 }

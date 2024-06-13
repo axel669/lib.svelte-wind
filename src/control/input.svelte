@@ -1,21 +1,5 @@
 <svelte:options immutable />
 
-<script context="module">
-    const parseNumeric = (value) => {
-        if (value === "") {
-            return null
-        }
-        return parseFloat(value)
-    }
-
-    const diff = (type, value, internal) => {
-        if ((type !== "number" && type !== "range") || typeof value === "string") {
-            return value !== internal
-        }
-        return parseFloat(internal) !== value
-    }
-</script>
-
 <script>
     import wsx from "../wsx.mjs"
 
@@ -24,20 +8,12 @@
     export let flat = false
     export let label
     export let color = "@default"
-    export let error = null
-    export let hint = null
     export let disabled
 
     export let value = ""
     export let autocompleteOptions = null
 
-    export let transform = i => i
-    export let tvalue
-    export let validate = () => true
-    export let valid
-
     let input = null
-    let internalValue = value
     export const focus = () => input.focus()
 
     const id =
@@ -45,17 +21,7 @@
         ? null
         : `${Math.random().toString(16)}_${Date.now()}`
 
-    $: isNumeric = (type === "number" || type === "range")
-    $: if (diff(type, value, internalValue) === true) {
-        internalValue = value
-    }
-
-    const update = (evt) => {
-        internalValue = evt.target.value
-        value = (isNumeric === true) ? parseNumeric(internalValue) : internalValue
-        tvalue = transform(value)
-        valid = validate(tvalue)
-    }
+    const update = (evt) => value = evt.target.value
 
     $: restKeys = Object.keys($$restProps)
     $: props = restKeys.reduce(
@@ -72,7 +38,7 @@
 
     $: wind = {
         "$flat": flat,
-        "@control": true,
+        "@@control": true,
         "$color": color,
         ...props.wind,
     }
@@ -80,16 +46,16 @@
     $: tag = (type === "area") ? "textarea" : "input"
 </script>
 
-<label use:wsx={wind} ws-error={error}>
+<label use:wsx={wind}>
     {#if label}
-        <span use:wsx={{ slot: "label-text" }} ws-hint={hint}>{label}</span>
+        <span use:wsx={{ "$label": true }}>{label}</span>
     {/if}
     <svelte:element
         this={tag}
         {...props.input}
         {disabled}
         {type}
-        value={internalValue}
+        {value}
         list={id}
         on:focus
         on:blur
@@ -97,8 +63,22 @@
         bind:this={input}
     />
 
-    <slot name="start" />
-    <slot name="end" />
+    {#if $$slots.start}
+        <span use:wsx={{ "$start": true }}>
+            <slot name="start" />
+        </span>
+    {/if}
+    {#if $$slots.end}
+        <span use:wsx={{ "$end": true }}>
+            <slot name="end" />
+        </span>
+    {/if}
+    {#if $$slots.extra}
+        <span use:wsx={{ "$extra": true }}>
+            <slot name="extra" />
+        </span>
+    {/if}
+
     {#if autocompleteOptions !== null}
         <datalist {id}>
             {#each autocompleteOptions as value}

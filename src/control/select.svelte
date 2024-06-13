@@ -21,8 +21,8 @@
 
     export let options = []
     export let value
-    export let color = "default"
-    export let outline = false
+    export let color = "@default"
+    export let flat = false
     export let label = null
     export let disabled = false
 
@@ -33,8 +33,8 @@
     $: grouped = groupOptions(options)
 
     $: wind = {
-        "@control": true,
-        "$outline": outline,
+        "@@control": true,
+        "$flat": flat,
         "$color": color,
         ...$$restProps,
     }
@@ -42,7 +42,7 @@
 
 <label use:wsx={wind}>
     {#if label}
-        <span ws-x="[$label-text]">{label}</span>
+        <span ws-x="[$label]">{label}</span>
     {/if}
     <select value={indexValue} on:input={update} {disabled}>
         {#each grouped as item, index}

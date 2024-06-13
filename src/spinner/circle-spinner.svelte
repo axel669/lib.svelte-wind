@@ -7,9 +7,10 @@
     export let color = "@primary"
 
     $: wind = {
+        ...$$restProps,
         "@size": size,
         "$color": color,
     }
 </script>
 
-<ws-circle-spinner use:wsx={wind} />
+<ws-circle-spinner use:wsx={wind} style="aspect-ratio: 1 / 1;" />

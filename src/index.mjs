@@ -1,7 +1,8 @@
 export { default as Button } from "./control/button.svelte"
 export { default as Input } from "./control/input.svelte"
+export { default as Label } from "./control/label.svelte"
 export { default as Link } from "./control/link.svelte"
-export { default as Radio } from "./control/radio.svelte"
+export { default as RadioGroup } from "./control/radio-group.svelte"
 export { default as Select } from "./control/select.svelte"
 export { default as Tabs } from "./control/tabs.svelte"
 export { default as Toggle } from "./control/toggle.svelte"
@@ -40,14 +41,23 @@ export { default as Confirm } from "./dialogs/confirm.svelte"
 export { default as DataTable } from "./composed/data-table.svelte"
 export { default as TH } from "./composed/data-table/th.svelte"
 export { default as EntryButton } from "./composed/entry-button.svelte"
+export { default as Form } from "./composed/form.svelte"
 export { default as Toast } from "./composed/toast.svelte"
 
 export { default as AsyncButton } from "./async/button.svelte"
 export { default as LoadZone } from "./async/load-zone.svelte"
 
+export { default as Route } from "./routing/route.svelte"
+export { default as Title } from "./routing/title.svelte"
+
 export { default as wsx } from "./wsx.mjs"
 
 export { hash } from "./hash.js"
 
+export {
+    route,
+    stackStore,
+    relpath,
+} from "./routing/routing.js"
 export * from "./handler$.mjs"
 export * from "./composed/table-functions.js"
