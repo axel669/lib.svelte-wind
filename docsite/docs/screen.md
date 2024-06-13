@@ -10,21 +10,3 @@ required to get stacking screens to have the effect.
 
 ### width _string_
 The width of the screen before stack-based padding is applied
-
-## Example
-```svelte
-<script>
-    import { Scren, Button, Paper } from "@axel669/zephyr"
-
-    export let close
-</script>
-
-<Screen width="70%">
-    <Paper>
-        This screen is pretty cool I swear
-        <Button on:click={() => close("hi")}>
-            Close
-        </Button>
-    </Paper>
-</Screen>
-```
