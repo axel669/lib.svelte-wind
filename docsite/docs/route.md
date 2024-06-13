@@ -3,6 +3,14 @@ Component for doing client side routing using a hash router, using components
 that sit within the components where content goes, rather than a top level
 route map.
 
+## relpath Function
+> These docs will eventually move into another page with a link from here.
+
+The relpath function is for use with links (a tags, Link component, etc.) or
+anything else that wants to generate a hash url. The function takes a path that
+is resolved from the current route the element is in. Example below shows this
+in action (hover over the links to see where they go).
+
 ## Props
 
 ### path _string_
