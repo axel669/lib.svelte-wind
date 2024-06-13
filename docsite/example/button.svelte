@@ -15,9 +15,9 @@
     <Button outline>Default</Button>
     <Button fill>Default</Button>
 
-    <Button color="@primary" flat>Default</Button>
-    <Button color="@primary" outline>Default</Button>
-    <Button color="@primary" fill>Default</Button>
+    <Button color="@primary" flat>Primary</Button>
+    <Button color="@primary" outline>Primary</Button>
+    <Button color="@primary" fill>Primary</Button>
 
     <Button color="@secondary" flat>Secondary</Button>
     <Button color="@secondary" outline>Secondary</Button>
