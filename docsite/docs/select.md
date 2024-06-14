@@ -1,5 +1,4 @@
 # Select
-
 A wrapper for select elements to make them look nicer.
 
 ## Base
@@ -19,8 +18,8 @@ The text to display as the label
 ### options _Array[Object]_
 An array of options and groups to show in the select. Details below
 
-### outline `bool`
-Sets `$outline`
+### flat `bool`
+Sets `$flat`
 
 ### value _any_
 The value currently selected. Can be bound to react to selections or
