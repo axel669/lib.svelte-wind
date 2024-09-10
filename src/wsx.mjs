@@ -13,7 +13,7 @@ export default (node, props) => {
                 if (key === none) {
                     return props
                 }
-                const realKey = key.replaceAll("--", ":").replace(/^\-/, "$")
+                const realKey = key.replace(/^!/, "").replaceAll("_", ":")
                 props[realKey] = value
                 return props
             },
