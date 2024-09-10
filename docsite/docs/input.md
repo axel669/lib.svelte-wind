@@ -15,8 +15,10 @@ Sets the $color macro.
 ### disabled
 Disables the input.
 
-### flat
-If true, the input will not have a border. Default is false (with a border).
+### outline / linedFill / lined / flat _bool_
+Sets the input border style using the macros of the same name from windstorm.
+If none of them are given, the input has a soft outline that changes color when
+focused, whereas when outline is defined, the border always colorized.
 
 ### type
 The type of input. Default to "text".
