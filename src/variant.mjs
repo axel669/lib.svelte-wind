@@ -1,12 +1,10 @@
-export default ({ flat, fill, outline }, def = "$flat") => {
-    if (outline === true) {
-        return "$outline"
-    }
-    if (fill === true) {
-        return "$fill"
-    }
-    if (flat === true) {
-        return "$flat"
+export default (def, ...variants) => {
+    for (const variant of variants) {
+        const [entry] = Object.entries(variant)
+        const [key, value] = entry
+        if (value === true) {
+            return `$${key.replace(/[A-Z]/g, (s) => `-${s.toLocaleLowerCase()}`)}`
+        }
     }
     return def
 }

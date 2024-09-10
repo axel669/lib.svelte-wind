@@ -1,5 +1,6 @@
 import ws from "@axel669/windstorm"
 
+export const none = Symbol("none")
 export default (node, props) => {
     const update = (props) => {
         const { slot = null, ...goodProps } = props ?? {}
@@ -9,6 +10,9 @@ export default (node, props) => {
         }
         const formatted = Object.entries(goodProps).reduce(
             (props, [key, value]) => {
+                if (key === none) {
+                    return props
+                }
                 const realKey = key.replaceAll("--", ":").replace(/^\-/, "$")
                 props[realKey] = value
                 return props
