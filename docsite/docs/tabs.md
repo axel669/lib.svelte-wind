@@ -13,8 +13,8 @@ should be a string, `value` can be of any type.
 ### vertical _bool_
 Sets `$vert`
 
-### solid _bool_
-Sets `$solid`
+### fill _bool_
+Sets `$fill`
 
 ### value _any_
 The value of the currently selected tab. Can be bound to react to
