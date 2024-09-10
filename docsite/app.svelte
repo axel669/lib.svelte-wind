@@ -49,7 +49,7 @@
                 Zephyr Docs - {$page}
             </Text>
 
-            <Link href="#" button slot="menu">
+            <Link href="#" button slot="menu" ground>
                 <Icon name="house-fill" t.sz="20px" />
             </Link>
 
