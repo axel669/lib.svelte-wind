@@ -19,6 +19,7 @@
     } from "#lib"
 
     import Docs from "#comp/docs"
+    import Test from "./test.svelte"
 
     import examples from "$examples"
 
@@ -57,9 +58,11 @@
         </Titlebar>
 
         <Route exact>
-            <Grid cols="1fr 1fr 1fr" autoRow="48px" p="0px">
+            <Grid cols="1fr 1fr 1fr" autoRow="48px" p="0px" over="visible">
                 {#each examples as {id, name}}
-                    <Link href="#/{id}" button outline -color--hover="@secondary">{name}</Link>
+                    <Link href="#/{id}" button !$color_hover="@secondary">
+                        {name}
+                    </Link>
                 {/each}
             </Grid>
         </Route>
