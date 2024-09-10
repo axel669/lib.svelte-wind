@@ -22,3 +22,6 @@ Sets the button variant of the label when `button` is `true`.
 
 ### for _string_
 [Label for attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label#for)
+
+### ground _bool_
+Alias for `$ground`

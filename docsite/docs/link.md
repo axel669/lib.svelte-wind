@@ -22,3 +22,6 @@ Sets the target attribute.
 ### fill / outline / flat _bool_
 Sets the link-button type to `$fill` if fill is true, `$outline` if outline
 is true, or `$flat` if neither is true.
+
+### ground _bool_
+Alias for `$ground`

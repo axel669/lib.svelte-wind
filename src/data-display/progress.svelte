@@ -4,24 +4,18 @@
     import wsx from "../wsx.mjs"
 
     export let value = 0
+    export let min = 0
     export let max = 1
-    export let color = "default"
-    export let outline = false
-    export let row = false
-    export let label = null
+    export let buffer = 0
+    export let busy = false
+    export let color = "@default"
 
     $: wind = {
-        "@@progress": true,
-        "$outline": outline,
         "$color": color,
-        $row: row,
         ...$$restProps,
     }
+
+    $: busyStatus = (busy === true) ? { busy: true } : {}
 </script>
 
-<label use:wsx={wind}>
-    {#if label}
-        <span ws-x="[$progress-label] [t.ws nowrap]">{label}</span>
-    {/if}
-    <progress {value} {max} />
-</label>
+<ws-progress use:wsx={wind} {...busyStatus} {min} {max} {value} {buffer} />

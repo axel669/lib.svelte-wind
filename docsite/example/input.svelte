@@ -45,6 +45,9 @@
 <Grid cols="1fr 1fr 1fr" p="0px">
     {#each colors as color}
         <Input {color} label="{color}" />
+        <Input outline {color} label="outline" />
+        <Input linedFill {color} label="linedFill" />
+        <Input lined {color} label="lined" />
         <Input flat {color} label="flat" />
         <Input disabled {color} label="disabled" />
     {/each}

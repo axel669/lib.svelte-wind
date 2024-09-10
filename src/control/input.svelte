@@ -1,11 +1,15 @@
 <svelte:options immutable />
 
 <script>
-    import wsx from "../wsx.mjs"
+    import wsx, { none } from "../wsx.mjs"
+    import variant from "../variant.mjs"
 
     export let type = "text"
 
     export let flat = false
+    export let lined = false
+    export let linedFill = false
+    export let outline = false
     export let label
     export let color = "@default"
     export let disabled
@@ -36,8 +40,16 @@
         {wind: {}, input: {}}
     )
 
+    $: variantStyle = variant(
+        none,
+        { outline },
+        { linedFill },
+        { lined },
+        { flat }
+    )
+
     $: wind = {
-        "$flat": flat,
+        [variantStyle]: true,
         "@@control": true,
         "$color": color,
         ...props.wind,

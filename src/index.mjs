@@ -40,6 +40,7 @@ export { default as Confirm } from "./dialogs/confirm.svelte"
 
 export { default as DataTable } from "./composed/data-table.svelte"
 export { default as TH } from "./composed/data-table/th.svelte"
+export { default as ElementToast } from "./composed/element-toast.svelte"
 export { default as EntryButton } from "./composed/entry-button.svelte"
 export { default as Form } from "./composed/form.svelte"
 export { default as Toast } from "./composed/toast.svelte"
