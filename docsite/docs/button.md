@@ -16,5 +16,8 @@ Sets the `<button>` disabled attribute
 Sets the button type to `$fill` if fill is true, `$outline` if outline
 is true, or `$flat` if neither those is true (or if flat is true).
 
+### ground _bool_
+Alias for `$ground`
+
 ## Events
 - click

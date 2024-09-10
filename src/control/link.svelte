@@ -6,6 +6,8 @@
 
     export let button = false
     export let color = false
+    export let compact = false
+    export let ground = false
 
     export let href = ""
     export let rel = "noreferrer"
@@ -17,12 +19,19 @@
 
     export let disabled = null
 
-    $: type = variant({ fill, outline, flat })
+    $: type = variant(
+        "$flat",
+        { fill },
+        { outline },
+        { flat }
+    )
 
     $: wind = {
         "@@button": button,
         [type]: true,
         "$color": color,
+        $compact: compact,
+        $ground: ground,
         ...$$restProps
     }
 </script>

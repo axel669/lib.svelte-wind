@@ -6,18 +6,26 @@
 
     export let color = false
     export let compact = false
+    export let ground = false
     export let disabled
 
     export let fill = false
     export let outline = false
     export let flat = false
 
-    $: type = variant({ fill, outline, flat })
+    // $: type = variant({ fill, outline, flat })
+    $: type = variant(
+        "$flat",
+        { fill },
+        { outline },
+        { flat }
+    )
 
     $: wind = {
         [type]: true,
         "$color": color,
         $compact: compact,
+        $ground: ground,
         ...$$restProps
     }
 </script>
