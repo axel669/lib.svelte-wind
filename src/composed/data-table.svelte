@@ -157,9 +157,9 @@
     }
 </script>
 
-<Paper {color} h={height} card>
+<Paper h={height} r="0px">
     <ws-flex use:wsx={content} slot="content" bind:this={scroller}>
-        <Table data={rows} {color} {fillHeader} {...$$restProps} b.t.w="0px">
+        <Table data={rows} {color} {fillHeader} b.t.w="2px" {...$$restProps}>
             <tr use:wsx={header} slot="header">
                 <slot name="header">
                     <th>No Header Defined</th>
@@ -174,7 +174,7 @@
         </Table>
     </ws-flex>
     <Grid slot="footer" gr.cols="min-content min-content min-content 1fr"
-    rows="32px" b="1px solid @color" b.b.w="4px">
+    rows="32px" b="1px solid {color}" b.b.w="2px">
         {#if pageCount > 0}
             <Button on:click={prev} disabled={page === 0}>
                 <Icon name="caret-left" />
