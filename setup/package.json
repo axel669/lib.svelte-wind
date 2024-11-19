@@ -1,0 +1,28 @@
+{
+  "name": "wind-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "rollup -c",
+    "preview": "wrangler pages dev"
+  },
+  "keywords": [],
+  "author": "Axel",
+  "license": "MIT",
+  "dependencies": {
+    "@axel669/asuid": "^0.2.1",
+    "@axel669/rollup-copy-static": "^0.1.2",
+    "@axel669/rollup-dollar-path": "^0.1.0",
+    "@axel669/rollup-html-input": "^0.1.2",
+    "@axel669/zephyr": "0.4.7",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "rollup": "^3.21.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-svelte": "^7.1.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.58.0"
+  }
+}

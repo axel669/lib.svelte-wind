@@ -1,13 +1,14 @@
 <script context="module">
+    const urlChars = "[\\w\\-\\%\\(\\)\\.@!\\*\\^\\$]"
     const urlPattern = (path, exact) => {
         const regexSource = path.replace(
             /:([\w\-]+)/g,
-            (_, name) => `\(?<${name}>[\\w\\-\\%]+\)`
+            (_, name) => `\(?<${name}>${urlChars}+\)`
         )
         if (exact === true) {
             return new RegExp(`(?<_path>^${regexSource})$`)
         }
-        return new RegExp(`(?<_path>^${regexSource})(((?<=\\/)[\\w\\-\\%])|\\/|$)`)
+        return new RegExp(`(?<_path>^${regexSource})(((?<=\\/)${urlChars})|\\/|$)`)
     }
 </script>
 

@@ -18,11 +18,22 @@
         <Link href={relpath("woah")}>
             Deeper, Path param = woah
         </Link>
-        <Link href={relpath("huzzah")}>
-            Deeper, Path param = huzzah
+        <Link href={relpath("huzzah.message!")}>
+            Deeper, Path param = huzzah.message!
         </Link>
         <Route path=":deeper" let:routeInfo>
             <Text>Path Param: {routeInfo.params.deeper}</Text>
         </Route>
+    </Route>
+    <Route path="/nesting/">
+        <Route>
+            Always shows
+        </Route>
+        <Route path="/deep">
+            Deeper
+        </Route>
+    </Route>
+    <Route path="/nesting/:thing" let:routeInfo>
+        <pre>{JSON.stringify(routeInfo, null, 2)}</pre>
     </Route>
 </Flex>

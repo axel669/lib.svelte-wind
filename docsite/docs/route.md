@@ -1,4 +1,4 @@
-# Route _Experimental_
+# Route
 Component for doing client side routing using a hash router, using components
 that sit within the components where content goes, rather than a top level
 route map.
@@ -22,10 +22,12 @@ found in the `routeInfo` object that is accesible in slotted content and
 rendered components. All paths are relative to the full matching path of the
 route above them.
 
+> Chars matched in route parts: `[\w\-\%\(\)\.@!\*\^\$]`
+
 ### exact _bool_
 Determines if the route will render content when the path doesnt match exactly.
 Default is false, allowing nested routes to work as expected. If true, content
-is only rendered if the patch matches exactly, no extra bits at the start or
+is only rendered if the patch matches exactly, no extra bits at the
 end will match.
 
 ### component _Component_
