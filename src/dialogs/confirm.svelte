@@ -35,10 +35,10 @@
     </Text>
 
     <Grid cols="1fr 1fr" slot="footer" p="0px">
-        <Button on:click={cls(false)} color="@danger">
+        <Button on:click={cls(false)} color="@danger" ground>
             {cancelText}
         </Button>
-        <Button on:click={cls(true)} color="@secondary">
+        <Button on:click={cls(true)} color="@secondary" ground>
             {okText}
         </Button>
     </Grid>

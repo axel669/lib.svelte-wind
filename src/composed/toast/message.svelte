@@ -17,7 +17,7 @@
 </script>
 
 <Notification {color} on:click={dismiss}>
-    <Text slot="start" -adorn>
+    <Text slot="start" !$adorn>
         {#if icon !== false}
             <Icon name={icon} />
         {/if}
@@ -25,7 +25,7 @@
     <span>{message}</span>
     <div slot="end" ws-x="[grid]">
         {#if actionText}
-            <Button on:click={respond} r.l="0px">
+            <Button on:click={respond} r.l="0px" ground>
                 {actionText}
             </Button>
         {/if}

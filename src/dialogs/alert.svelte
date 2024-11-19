@@ -28,7 +28,7 @@
         {message}
     </Text>
 
-    <Button slot="footer" on:click={close} {color}>
+    <Button slot="footer" on:click={close} {color} ground>
         {okText}
     </Button>
 </Dialog>

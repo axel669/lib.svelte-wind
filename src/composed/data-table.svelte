@@ -176,10 +176,10 @@
     <Grid slot="footer" gr.cols="min-content min-content min-content 1fr"
     rows="32px" b="1px solid {color}" b.b.w="2px">
         {#if pageCount > 0}
-            <Button on:click={prev} disabled={page === 0}>
+            <Button on:click={prev} disabled={page === 0} ground>
                 <Icon name="caret-left" />
             </Button>
-            <Button on:click={next} disabled={page === maxPage}>
+            <Button on:click={next} disabled={page === maxPage} ground>
                 <Icon name="caret-right" />
             </Button>
             <Text adorn t.ws="nowrap">
