@@ -47,6 +47,7 @@ export { default as Toast } from "./composed/toast.svelte"
 
 export { default as AsyncButton } from "./async/button.svelte"
 export { default as LoadZone } from "./async/load-zone.svelte"
+export { default as Suspend } from "./async/suspend.svelte"
 
 export { default as Route } from "./routing/route.svelte"
 export { default as Title } from "./routing/title.svelte"
