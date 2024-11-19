@@ -33,7 +33,7 @@
     </svelte:fragment>
 </DataTable>
 
-<div ws-x="[h 4px]" />
+<div ws-x="[h 8px]" />
 
 <DataTable {data} color="@primary" pageSize={3} bind:page>
     <svelte:fragment slot="header">
