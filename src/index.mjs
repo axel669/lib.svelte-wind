@@ -17,6 +17,7 @@ export { default as Progress } from "./data-display/progress.svelte"
 export { default as Table } from "./data-display/table.svelte"
 export { default as Tooltip } from "./data-display/tooltip.svelte"
 
+export { default as ElementToaster } from "./info/element-toaster.svelte"
 export { default as Icon } from "./info/icon.svelte"
 export { default as Notification } from "./info/notification.svelte"
 export { default as Titlebar } from "./info/titlebar.svelte"
@@ -40,10 +41,8 @@ export { default as Confirm } from "./dialogs/confirm.svelte"
 
 export { default as DataTable } from "./composed/data-table.svelte"
 export { default as TH } from "./composed/data-table/th.svelte"
-export { default as ElementToast } from "./composed/element-toast.svelte"
 export { default as EntryButton } from "./composed/entry-button.svelte"
 export { default as Form } from "./composed/form.svelte"
-export { default as Toast } from "./composed/toast.svelte"
 
 export { default as AsyncButton } from "./async/button.svelte"
 export { default as LoadZone } from "./async/load-zone.svelte"
@@ -63,3 +62,4 @@ export {
 } from "./routing/routing.js"
 export * from "./handler$.mjs"
 export * from "./composed/table-functions.js"
+export * from "./changed.js"

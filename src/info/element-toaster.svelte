@@ -18,12 +18,28 @@
 
     const macros = {
         top: {
+            x: "50%",
+            tf: "translateX(-50%)",
             "-y": "100%",
             flex: "column-reverse",
         },
         bottom: {
+            x: "50%",
+            tf: "translateX(-50%)",
             "y": "100%",
             flex: "column"
+        },
+        left: {
+            y: "50%",
+            tf: "translateY(-50%)",
+            "-x": "100%",
+            flex: "row-reverse"
+        },
+        right: {
+            y: "50%",
+            tf: "translateY(-50%)",
+            "x": "100%",
+            flex: "row"
         },
     }
 </script>
@@ -35,9 +51,9 @@
     import { eventHandler$ } from "../handler$.mjs"
     import wsx from "../wsx.mjs"
 
-    import Toaster from "../info/toaster.svelte"
+    import Toaster from "./toaster.svelte"
 
-    import ToastMessage from "./toast/message.svelte"
+    import ToastMessage from "./toaster/message.svelte"
 
     export let component = ToastMessage
     export let position = "top"
@@ -72,9 +88,7 @@
     $: wind = {
         gap: "8px",
         pos: "absolute",
-        x: "50%",
         z: "50",
-        tf: "translateX(-50%)",
         ...macros[position],
         ...$$restProps,
     }

@@ -3,14 +3,14 @@
 <script>
     import wsx from "../wsx.mjs"
 
-    export let label = ""
     export let color = "@default"
+    export let checkbox = false
     export let checked = false
     export let flat = false
-    export let value
     export let group = []
-    export let checkbox = false
+    export let label = ""
     export let reverse = false
+    export let value
 
     $: container = {
         "@@toggle": true,

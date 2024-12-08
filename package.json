@@ -35,6 +35,7 @@
   ],
   "imports": {
     "#lib": "./src/index.mjs",
-    "#comp/*": "./docsite/comp/*.svelte"
+    "#comp/*": "./docsite/comp/*.svelte",
+    "#state/*": "./docsite/state/*.js"
   }
 }

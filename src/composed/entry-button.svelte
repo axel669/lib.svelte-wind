@@ -22,10 +22,13 @@
             send("entry", result)
         }
     )
+    $: wrapperProps = $$props["w!props"] ?? {}
+    $: rest = {...$$restProps}
+    $: delete rest["w!props"]
 </script>
 
-<Button {...$$restProps} on:click={open(props)}>
+<Button {...rest} on:click={open(props)}>
     <slot />
 </Button>
 
-<svelte:component this={wrapper} {component} bind:this={element} />
+<svelte:component this={wrapper} {...wrapperProps} {component} bind:this={element} />

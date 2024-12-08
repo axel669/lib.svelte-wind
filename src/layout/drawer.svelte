@@ -15,24 +15,48 @@
             "@@action": true,
         }
     }
+    const parseTime = (timestring) => {
+        if (!timestring) {
+            return 200
+        }
+        const { base, scale } =
+            timestring.match(/(?<base>\d+)(?<scale>s|ms)/)?.groups ?? {}
+        if (base === undefined) {
+            return 200
+        }
+        const numeric = parseInt(base)
+        if (scale === "ms") {
+            return numeric
+        }
+        return numeric * 1000
+    }
 </script>
 
 <script>
+    import { getContext } from "svelte"
+
     import wsx from "../wsx.mjs"
 
     import Paper from "./paper.svelte"
+    import { modalContext } from "./modal.svelte"
 
     export let height
     export let type = "menu"
 
+    const animTime = getContext(modalContext)
+
+    // When Svelte removes things from the DOM they are removed immediately
+    // unless Svelte has a transition running. Adding this prevents the drawer
+    // from disappearing without first letting the built in animations run.
     const trick = (node, options) => ({
         delay: 0,
-        duration: 250,
+        duration: parseTime($animTime),
         css: () => "",
     })
 
     $: container = {
         ...defs[type],
+        $show: true,
         h: (type === "select") ? height : "100%",
         grid: true,
     }

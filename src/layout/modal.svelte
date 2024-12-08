@@ -2,12 +2,17 @@
 
 <script context="module">
     let topClose = null
+    export const modalContext = Symbol("modal context")
 </script>
 
 <script>
-    import { tick } from "svelte"
+    import { tick, setContext } from "svelte"
+    import { writable } from "svelte/store"
+
+    import wsx from "../wsx.mjs"
 
     export let component
+    export let animTime = "200ms"
 
     let modalProps = null
     let resolver = null
@@ -42,13 +47,18 @@
     )
 
     let visible = null
+    const animationTime = writable(animTime)
+    $: wind = {
+        "@anim-time": $animationTime,
+    }
+    setContext(modalContext, animationTime)
 </script>
 
 <input type="checkbox" bind:this={visible} ws-x="[disp none]" />
 {#if resolver !== null}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <ws-modal on:click={cancel} role="dialog">
+    <ws-modal on:click={cancel} role="dialog" use:wsx={wind}>
         <svelte:component
         bind:this={displayed}
         this={component}

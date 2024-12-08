@@ -6,8 +6,8 @@
 
     import Flex from "../layout/flex.svelte"
 
-    export let options = []
     export let layout = Flex
+    export let options = []
     export let value
 </script>
 

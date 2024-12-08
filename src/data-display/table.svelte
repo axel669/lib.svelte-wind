@@ -4,8 +4,8 @@
     import wsx from "../wsx.mjs"
 
     export let color = "@default"
-    export let fillHeader = false
     export let data = []
+    export let fillHeader = false
 
     $: wind = {
         "$color": color,

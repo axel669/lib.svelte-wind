@@ -12,3 +12,12 @@ content without needing to bind to the parent.
 
 > Beacuse the hide function is given to a named slot, the `let:hide` declaration
 > needs to be on the slotted element.
+
+## Slots
+
+### _default_
+The default slot is the element that is displayed normally and should trigger
+the popover to be shown
+
+### content
+The content of the popover

@@ -8,23 +8,23 @@ needlessly.
 
 ## Props
 
-### color _string_
-Sets `$color`
-
 ### card _bool_
 Sets `$outline`
 
-### square _bool_
-Sets `r[0px]`
+### color _string_
+Sets `$color`
 
 ### layout _Component_
 Sets the layout the card will use to display content. Default is Flex.
 
+### square _bool_
+Sets `r[0px]`
+
 ### scrollable _bool_
 Sets `over[auto]` on the layout component
 
-### l-*
-Any prop that is prefixed with `l-` will be passed to the layout
+### l!*
+Any prop that is prefixed with `l!` will be passed to the layout
 component, with the remaining props acting as the normal wind functions
 on the paper itself
 

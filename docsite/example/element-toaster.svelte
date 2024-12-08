@@ -1,5 +1,5 @@
 <script>
-    import { ElementToast, Button, handler$ } from "@axel669/zephyr"
+    import { ElementToaster, Button, handler$ } from "@axel669/zephyr"
 
     // let toast = [null, null]
     const message = handler$(
@@ -20,13 +20,13 @@
     )
 </script>
 
-<ElementToast let:show position="top" on:action={console.log}>
+<ElementToaster let:show position="top" on:action={console.log}>
     <Button on:click={message(show)}>
         Show a Message
     </Button>
-</ElementToast>
-<ElementToast let:show position="bottom" on:action={console.log} w.min="300px">
+</ElementToaster>
+<ElementToaster let:show position="bottom" on:action={console.log} w.min="300px">
     <Button on:click={warning(show)}>
         Show a Warning
     </Button>
-</ElementToast>
+</ElementToaster>

@@ -12,6 +12,9 @@ export const route = derived(
         return hash
     }
 )
+route.set = (path) => {
+    hash.set(path)
+}
 
 export const ctx = {
     router: Symbol("Router Context"),

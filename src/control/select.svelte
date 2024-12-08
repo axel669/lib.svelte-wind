@@ -19,12 +19,12 @@
 <script>
     import wsx from "../wsx.mjs"
 
-    export let options = []
-    export let value
+    export let disabled = false
     export let color = "@default"
     export let flat = false
     export let label = null
-    export let disabled = false
+    export let options = []
+    export let value
 
     const update = (evt) => value = options[evt.target.value].value
 

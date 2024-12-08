@@ -3,9 +3,9 @@
 <script>
     import wsx from "./wsx.mjs"
 
-    export let title = false
-    export let subtitle = false
     export let adorn = false
+    export let subtitle = false
+    export let title = false
 
     $: wind = {
         "$title-text": title,

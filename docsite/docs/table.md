@@ -15,13 +15,13 @@ colored border.
 
 ## Slots
 
+### empty-row
+If given, will render when the item in the array is `undefined`. Uses
+`let:rowNum` for the row number (0-based).
+
 ### header
 Used to render the header for the table. Needs to include the `tr`.
 
 ### row
 Used to render an item that is not `undefined`. Needs to include the `tr`. Uses
 `let:row` for the row data, and `let:rowNum` for the row number (0-based).
-
-### empty-row
-If given, will render when the item in the array is `undefined`. Uses
-`let:rowNum` for the row number (0-based).

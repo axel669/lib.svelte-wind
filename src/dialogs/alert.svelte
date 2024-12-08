@@ -8,11 +8,11 @@
     import Titlebar from "../info/titlebar.svelte"
 
     export let close
-    export let title = "Alert"
+    export let color = "@primary"
     export let icon
     export let message
     export let okText = "OK"
-    export let color = "@primary"
+    export let title = "Alert"
 </script>
 
 <Dialog card {color}>

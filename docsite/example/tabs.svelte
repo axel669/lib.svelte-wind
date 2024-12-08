@@ -11,4 +11,4 @@
 
 <pre>Value: {JSON.stringify(value)}</pre>
 <Tabs {options} bind:value color="@primary" />
-<Tabs {options} bind:value color="@secondary" fill vertical />
+<Tabs {options} bind:value color="@secondary" fill vertical t!b.l.w="4px" />

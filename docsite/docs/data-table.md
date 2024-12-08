@@ -33,10 +33,27 @@ visual area of the table.
 
 ### header
 A fragment that should contain the header cells for the table header. A standard
-`th` can be used, but the [TH](#/th) element from zephyr has
-additional configuration to handle more complex header-related actions.
+`th` can be used, but the `TH` element from zephyr has additional configuration
+to handle more complex header-related actions.
 
 ### row
 A fragment that should use regular `td` elements to define how a row should be
 layed out. The fragment will need `let:row` to access each row's data for
 displaying it.
+
+# TH
+The TH component has no use outside fo the DataTable, but is used to support
+the filter and sorting functionality for that component.
+
+## Props
+
+### sort _function_
+The sorting function to use for the column defined. Should return values that
+match the expected values for `Array.sort`.
+
+### filter _function_
+The function to use for filtering based on the column. The function is given
+2 arguments: a row of data and the text from the filter input field. The
+function should return `true` if the item should be shown. A filter function on
+a specific column does not need to only look at the specified column, but not
+doing could cause confusion for users without proper context.

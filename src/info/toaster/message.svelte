@@ -2,8 +2,8 @@
     import { createEventDispatcher } from "svelte"
 
     import Button from "../../control/button.svelte"
-    import Icon from "../../info/icon.svelte"
-    import Notification from "../../info/notification.svelte"
+    import Icon from "../icon.svelte"
+    import Notification from "../notification.svelte"
     import Text from "../../text.svelte"
 
     export let message = ""

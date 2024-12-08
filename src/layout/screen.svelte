@@ -11,6 +11,7 @@
 
     import wsx from "../wsx.mjs"
 
+    export let alignLeft = false
     export let width = false
 
     const stack = getContext(ctxStack) ?? 0
@@ -25,6 +26,7 @@
         "@stack": stack.toString(),
         "@screen-width": width,
         "bg.c": "transparent",
+        $left: alignLeft,
         ...$$restProps
     }
 </script>

@@ -2,7 +2,7 @@
 
 <script>
     import {
-        Grid,
+        EntryButton,
         Icon,
         Link,
         Paper,
@@ -10,6 +10,9 @@
         Select,
         Text,
         Titlebar,
+
+        Flex,
+        Grid,
 
         Route,
         Title,
@@ -20,11 +23,10 @@
 
     import Docs from "#comp/docs"
     import Test from "./test.svelte"
+    import SideMenu from "#comp/side-menu"
+    import { theme } from "#state/theme"
 
     import examples from "$examples"
-
-    let theme = localStorage.theme ?? "dark"
-    $: localStorage.theme = theme
 
     const page = stackStore("Home")
 
@@ -41,33 +43,27 @@
     <link href="https://cdn.jsdelivr.net/npm/prismjs@v1.29.0/themes/prism-twilight.css" rel="stylesheet" />
     <link href="./md-fix.css" rel="stylesheet" />
 </svelte:head>
-<svelte:body use:wsx={{"@@theme": theme, "@@app": true}} />
+<svelte:body use:wsx={{"@@theme": $theme, "@@app": true}} />
 
-<Screen>
-    <Paper square card>
+<Screen alignLeft width="100%">
+    <Paper square l!p="0px">
         <Titlebar slot="header" fill color="@primary">
             <Text title slot="title">
                 Zephyr Docs - {$page}
             </Text>
 
-            <Link href="#" button slot="menu" ground>
-                <Icon name="house-fill" t.sz="20px" />
-            </Link>
-
-            <Select m="4px" {options} bind:value={theme} slot="action" b.w="0px" />
+            <EntryButton slot="menu" component={SideMenu} ground w!props={{animTime: "100ms"}}>
+                <Icon name="list" />
+            </EntryButton>
         </Titlebar>
 
-        <Route exact>
-            <Grid cols="1fr 1fr 1fr" autoRow="48px" p="0px" over="visible">
-                {#each examples as {id, name}}
-                    <Link href="#/{id}" button !$color_hover="@secondary">
-                        {name}
-                    </Link>
-                {/each}
-            </Grid>
-        </Route>
-        {#each examples as example}
-            <Route path={example.id} component={Docs} props={{...example, page}} />
-        {/each}
+        <Flex w="min(100%, 720px)">
+            <Route exact path="/">
+                Home Screen?
+            </Route>
+            {#each examples as example}
+                <Route path={example.id} component={Docs} props={{...example, page}} />
+            {/each}
+        </Flex>
     </Paper>
 </Screen>

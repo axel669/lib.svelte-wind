@@ -15,25 +15,30 @@
         </Icon>
     </Notification>
     <Notification>
-        <Icon name="hexagon" slot="start" -adorn />
+        <Text adorn slot="start">
+            <Icon name="hexagon" />
+        </Text>
+
         <Text>
             Icon outside the notif text
         </Text>
     </Notification>
 
     <Notification color="@danger">
-        <Icon name="hexagon" slot="start" -adorn />
+        <Text adorn slot="start">
+            <Icon name="hexagon" />
+        </Text>
 
         <Text>
             Danger!
         </Text>
 
-        <Button slot="end">
+        <Button slot="end" ground>
             Fix!
         </Button>
     </Notification>
     <Notification color="@primary">
-        <Button slot="start">
+        <Button slot="start" ground>
             Fix!
         </Button>
 
@@ -41,6 +46,8 @@
             Reverse the slots
         </Text>
 
-        <Icon name="hexagon" slot="end" -adorn />
+        <Text adorn slot="end">
+            <Icon name="hexagon" />
+        </Text>
     </Notification>
 </Grid>
