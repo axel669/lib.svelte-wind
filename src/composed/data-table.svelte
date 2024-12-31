@@ -48,8 +48,8 @@
 
     import Grid from "../layout/grid.svelte"
 
-    import wsx from "../wsx.mjs"
-    import { handler$, eventHandler$ } from "../handler$.mjs"
+    import wsx from "../wsx.js"
+    import { handler$, eventHandler$ } from "../handler$.js"
 
     export let color = "@primary"
     export let fillHeader = true

@@ -1,5 +1,3 @@
-<svelte:options immutable />
-
 <script>
     import {
         EntryButton,
@@ -22,7 +20,6 @@
     } from "#lib"
 
     import Docs from "#comp/docs"
-    import Test from "./test.svelte"
     import SideMenu from "#comp/side-menu"
     import { theme } from "#state/theme"
 
@@ -47,15 +44,21 @@
 
 <Screen alignLeft width="100%">
     <Paper square l!p="0px">
-        <Titlebar slot="header" fill color="@primary">
-            <Text title slot="title">
+        {#snippet header()}
+        <Titlebar fill color="@primary">
+            {#snippet title()}
+            <Text title>
                 Zephyr Docs - {$page}
             </Text>
+            {/snippet}
 
-            <EntryButton slot="menu" component={SideMenu} ground w!props={{animTime: "100ms"}}>
-                <Icon name="list" />
+            {#snippet menu()}
+            <EntryButton component={SideMenu} ground w!props={{animTime: "100ms"}}>
+                <Icon name="menu-2" />
             </EntryButton>
+            {/snippet}
         </Titlebar>
+        {/snippet}
 
         <Flex w="min(100%, 720px)">
             <Route exact path="/">

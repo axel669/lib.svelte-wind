@@ -18,7 +18,8 @@
     import examples from "$examples"
     import { theme } from "#state/theme"
 
-    export let close
+    // export let close
+    const { close } = $props()
 
     export const cancel = () => close()
 
@@ -36,35 +37,48 @@
         { label: "Tron", value: "tron" },
     ]
 
-    $: if (routeChanged($route) === true) {
-        close()
-    }
+    $effect(() => {
+        if (routeChanged($route) === true) {
+            close()
+        }
+    })
 </script>
 
-<Drawer w="200px" layout={Grid}
-l!rows="auto 48px auto auto 1fr" l!p="0px" l!scrollable={false}
-l!h="100%" l!gap="0px">
-    <Titlebar fill color="@primary">
-        <Text slot="title" title>Zephyr</Text>
-    </Titlebar>
-    <Link href="#" button ground r="0px">
-        <Icon name="house-fill" t.sz="20px" />
-    </Link>
-    <Paper $ground r="0px">
-        <Titlebar slot="header" color="@accent">
-            <Text slot="title" title>Theme</Text>
+<Drawer w="200px">
+    {#snippet content()}
+    <Grid rows="auto 48px auto auto 1fr" p="0px" gap="0px" h="100%"
+    scrollable={false}>
+        <Titlebar fill color="@primary">
+            {#snippet title()}
+            <Text title>Zephyr</Text>
+            {/snippet}
         </Titlebar>
-        <Tabs {options} bind:value={$theme} vertical color="@accent" />
-    </Paper>
-    <Titlebar color="@secondary">
-        <Text slot="title" title>Components</Text>
-    </Titlebar>
-    <Flex p="0px" scrollable>
-        {#each examples as {id, name}}
-            <Link href="#/{id}" button !$color_hover="@secondary"
-            bg={bg(id, $route)} ground r="0px">
-                {name}
-            </Link>
-        {/each}
-    </Flex>
+        <Link href="#" button ground r="0px">
+            <Icon name="home-filled" t.sz="20px" />
+        </Link>
+        <Paper $ground r="0px">
+            {#snippet header()}
+            <Titlebar color="@accent">
+                {#snippet title()}
+                <Text slot="title" title>Theme</Text>
+                {/snippet}
+            </Titlebar>
+            {/snippet}
+            <Tabs {options} bind:value={$theme} vertical color="@accent" />
+        </Paper>
+        <Titlebar color="@secondary">
+            {#snippet title()}
+            <Text title>Components</Text>
+            {/snippet}
+        </Titlebar>
+        <Flex p="0px" scrollable>
+            {#each examples as {id, name}}
+                <Link href="#/{id}" button !$color_hover="@secondary"
+                bg={bg(id, $route)} ground r="0px">
+                    {name}
+                </Link>
+            {/each}
+        </Flex>
+    </Grid>
+    {/snippet}
 </Drawer>

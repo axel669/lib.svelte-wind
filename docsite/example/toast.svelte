@@ -1,6 +1,6 @@
 <script>
     import {
-        Notification,
+        Toast,
         Button,
         Text,
         Icon,
@@ -9,45 +9,55 @@
 </script>
 
 <Grid cols="1fr 1fr">
-    <Notification>
+    <Toast>
         <Icon name="hexagon">
             Icon with the notif text
         </Icon>
-    </Notification>
-    <Notification>
-        <Text adorn slot="start">
+    </Toast>
+    <Toast>
+        {#snippet start()}
+        <Text adorn>
             <Icon name="hexagon" />
         </Text>
+        {/snippet}
 
         <Text>
             Icon outside the notif text
         </Text>
-    </Notification>
+    </Toast>
 
-    <Notification color="@danger">
-        <Text adorn slot="start">
+    <Toast color="@danger">
+        {#snippet start()}
+        <Text adorn>
             <Icon name="hexagon" />
         </Text>
+        {/snippet}
 
         <Text>
             Danger!
         </Text>
 
-        <Button slot="end" ground>
+        {#snippet end()}
+        <Button ground>
             Fix!
         </Button>
-    </Notification>
-    <Notification color="@primary">
-        <Button slot="start" ground>
+        {/snippet}
+    </Toast>
+    <Toast color="@primary">
+        {#snippet start()}
+        <Button ground>
             Fix!
         </Button>
+        {/snippet}
 
         <Text>
             Reverse the slots
         </Text>
 
-        <Text adorn slot="end">
+        {#snippet end()}
+        <Text adorn>
             <Icon name="hexagon" />
         </Text>
-    </Notification>
+        {/snippet}
+    </Toast>
 </Grid>

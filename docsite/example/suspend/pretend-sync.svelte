@@ -1,5 +1,5 @@
 <script>
-    export let time
+    const { time } = $props()
 </script>
 
 <div>

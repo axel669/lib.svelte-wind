@@ -1,7 +1,7 @@
 <script>
     import { Toaster, Button } from "@axel669/zephyr"
 
-    let toaster = [null, null]
+    let toaster = $state([null, null])
     const notify = () => {
         toaster[0].show(
             5000,
@@ -18,8 +18,8 @@
     }
 </script>
 
-<Toaster bind:this={toaster[0]} position="tc" on:action={console.log} />
-<Toaster bind:this={toaster[1]} position="tl" on:action={console.log} />
-<Button on:click={notify}>
+<Toaster bind:this={toaster[0]} position="br" onaction={console.log} />
+<Toaster bind:this={toaster[1]} position="tl" onaction={console.log} />
+<Button onclick={notify}>
     Show a Notif
 </Button>

@@ -1,6 +1,4 @@
-<svelte:options immutable />
-
-<script context="module">
+<script module>
     const ctxStack = Symbol("stack context")
     const ctxClose = Symbol("close context")
 </script>
@@ -9,10 +7,14 @@
     import { getContext, setContext } from "svelte"
     import { fly } from "svelte/transition"
 
-    import wsx from "../wsx.mjs"
+    import wsx from "../wsx.js"
 
-    export let alignLeft = false
-    export let width = false
+    const {
+        alignLeft = false,
+        width = false,
+        children,
+        ...rest
+    } = $props()
 
     const stack = getContext(ctxStack) ?? 0
     const animation = {
@@ -22,15 +24,15 @@
 
     setContext(ctxStack, stack + 1)
 
-    $: wind = {
+    const wind = $derived({
         "@stack": stack.toString(),
         "@screen-width": width,
         "bg.c": "transparent",
         $left: alignLeft,
-        ...$$restProps
-    }
+        ...rest
+    })
 </script>
 
 <ws-screen use:wsx={wind} transition:fly={animation}>
-    <slot />
+    {@render children?.()}
 </ws-screen>

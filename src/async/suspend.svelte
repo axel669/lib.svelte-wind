@@ -1,34 +1,38 @@
-<svelte:options immutable />
-
 <script>
     import CircleSpinner from "../spinner/circle-spinner.svelte"
 
-    $: component = $$props["!component"]
-    $: list =
-        Object.entries($$props)
-        .filter(
-            ([key]) => key !== "!component"
-        )
-    $: wait = Promise.all(
-        list.map(
-            async pair => [pair[0], await pair[1]]
+    const {
+        "!component": Component,
+        loading,
+        error,
+        ...rest
+    } = $props()
+    const wait = $derived(
+        Promise.all(
+            Object.entries(rest).map(
+                async (pair) => [pair[0], await pair[1]]
+            )
         )
     )
 </script>
 
 {#await wait}
-    <slot name="loading">
+    {#if loading}
+        {@render loading()}
+    {:else}
         <div ws-x="[flex] [fl-center] [p 4px]">
             <CircleSpinner size="56px" />
             <span>Loading</span>
         </div>
-    </slot>
+    {/if}
 {:then entries}
-    <svelte:component this={component} {...Object.fromEntries(entries)} />
-{:catch error}
-    <slot name="error">
+    <Component {...Object.fromEntries(entries)} />
+{:catch loadError}
+    {#if error}
+        {@render error(loadError)}
+    {:else}
         <div ws-x="[b 1px solid red] [p 8px]">
-            {error}
+            {loadError}
         </div>
-    </slot>
+    {/if}
 {/await}

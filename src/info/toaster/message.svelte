@@ -1,33 +1,42 @@
 <script>
-    import { createEventDispatcher } from "svelte"
-
     import Button from "../../control/button.svelte"
     import Icon from "../icon.svelte"
-    import Notification from "../notification.svelte"
+    import Toast from "../toast.svelte"
     import Text from "../../text.svelte"
 
-    export let message = ""
-    export let icon = false
-    export let color = false
-    export let actionText = null
+    const {
+        message = "",
+        icon = false,
+        color = false,
+        actionText = null,
+        onaction,
+    } = $props()
 
-    const dispatch = createEventDispatcher()
-    const dismiss = () => dispatch("action", null)
-    const respond = () => dispatch("action", true)
+    const dismiss = () => onaction({ value: null })
+    const respond = (evt) => {
+        evt.stopPropagation()
+        onaction({ value: true })
+    }
 </script>
 
-<Notification {color} on:click={dismiss}>
-    <Text slot="start" !$adorn>
+<Toast {color} onclick={dismiss}>
+    {#snippet start()}
+    <Text adorn>
         {#if icon !== false}
             <Icon name={icon} />
         {/if}
     </Text>
+    {/snippet}
+
     <span>{message}</span>
-    <div slot="end" ws-x="[grid]">
+
+    {#snippet end()}
+    <div ws-x="[grid]">
         {#if actionText}
-            <Button on:click={respond} r.l="0px" ground>
+            <Button onclick={respond} r.l="0px" ground>
                 {actionText}
             </Button>
         {/if}
     </div>
-</Notification>
+    {/snippet}
+</Toast>

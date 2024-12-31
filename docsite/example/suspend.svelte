@@ -3,8 +3,8 @@
 
     import PretendSync from "./suspend/pretend-sync.svelte"
 
-    let asyncOp = null
-    let failedOp = null
+    let asyncOp = $state(null)
+    let failedOp = $state(null)
     const wait = (time) => new Promise(
         (resolve) => setTimeout(resolve, time)
     )
@@ -20,7 +20,7 @@
     }
 </script>
 
-<Button fill color="@primary" on:click={runTasks}>
+<Button fill color="@primary" onclick={runTasks}>
     Run Async Task
 </Button>
 {#if asyncOp !== null}

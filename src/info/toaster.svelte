@@ -1,6 +1,4 @@
-<svelte:options immutable />
-
-<script context="module">
+<script module>
     const genID = () => `${Date.now()}:${Math.random().toString(16)}`
 
     const delays = {}
@@ -18,27 +16,27 @@
 </script>
 
 <script>
-    import { createEventDispatcher } from "svelte"
     import { fade } from "svelte/transition"
 
-    import { eventHandler$ } from "../handler$.mjs"
-    import wsx from "../wsx.mjs"
+    import { eventHandler$ } from "../handler$.js"
+    import wsx from "../wsx.js"
 
     import ToastMessage from "./toaster/message.svelte"
 
-    export let component = ToastMessage
-    export let position = "tc"
+    const {
+        message = ToastMessage,
+        position = "tc",
+        onaction,
+        ...rest
+    } = $props()
 
-    let items = []
+    let items = $state([])
 
-    const dispatch = createEventDispatcher()
     const act = eventHandler$(
         (evt, id, props) => {
             delay.trigger(id)
-            dispatch(
-                "action",
-                { value: evt.detail, props }
-            )
+            evt.props = props
+            onaction?.(evt)
         }
     )
 
@@ -55,19 +53,19 @@
     }
     export const clear = () => items = []
 
-    $: wind = {
+    const wind = $derived({
         [`$${position}`]: true,
-        ...$$restProps,
-    }
+        ...rest,
+    })
+    const Message = $derived(message)
 </script>
 
 <ws-toaster use:wsx={wind}>
     {#each items as {props, id} (id)}
         <zephyr-toast-wrapper ws-x="[grid]" transition:fade={{duration: 200}}>
-            <svelte:component
-            this={component}
+            <Message
             {...props}
-            on:action={act(id, props)}
+            onaction={act(id, {...props})}
             />
         </zephyr-toast-wrapper>
     {/each}

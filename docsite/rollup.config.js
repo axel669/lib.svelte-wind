@@ -28,7 +28,7 @@ const exampleFiles = (await fs.readdir(
 )
 
 const componentList = exampleFiles.filter(
-    file => file.includes("/") === false
+    file => file.includes("/") === false && file.startsWith("--") === false
 )
 const exampleGroups = await Promise.all(
     componentList.map(
@@ -94,7 +94,7 @@ export default {
                     return id
                 }
                 if (id === "@axel669/zephyr") {
-                    return path.resolve("src/index.mjs")
+                    return path.resolve("src/index.js")
                 }
                 return undefined
             },
@@ -136,7 +136,11 @@ export default {
         },
         html(),
         svelte({
-            emitCss: false
+            emitCss: false,
+            compilerOptions: {
+                generate: "client",
+                runes: true,
+            }
         }),
         resolve({ browser: true }),
         terser(),

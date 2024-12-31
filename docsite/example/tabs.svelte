@@ -6,7 +6,7 @@
         { label: "Right", value: 2 },
         { label: "Array", value: ["wat"] },
     ]
-    let value = "left"
+    let value = $state("left")
 </script>
 
 <pre>Value: {JSON.stringify(value)}</pre>

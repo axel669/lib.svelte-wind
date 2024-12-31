@@ -14,7 +14,7 @@
     import Grid from "../../layout/grid.svelte"
     import Icon from "../../info/icon.svelte"
 
-    import wsx from "../../wsx.mjs"
+    import wsx from "../../wsx.js"
     import { dtContext } from "../data-table.svelte"
 
     export let sort = null
